@@ -1,0 +1,127 @@
+(11:17:50 AM IST) sneha:
+MONGODB:
+
+? Read and learn about MongoDB and Mongoose
+? Learn about Mongoose `populate` method
+? Learn aboutand pre-hooks  post-hooks
+? Mongoose methods and statics:
+https://mongoosejs.com/docs/2.7.x/docs/methods-statics.html
+? Learn about Migrations
+https://www.scaler.com/topics/mongodb-migration/
+Aggregation
+validation
+
+
+
+
+
+(05:55:12 PM IST) pratham:
+=> Environment variables(.env - dotenv npm)
+=> Scaffolding (express-generator or yeoman)
+=> Learn about JOI validation npm package
+=> Learn and Create swagger for API demo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(04:31:31 PM IST) aakash:
+MongoDB Learning Roadmap
+1. Introduction to MongoDB
+● What is MongoDB?
+● How MongoDB differs from relational databases (SQL-based systems).
+● When and why to use MongoDB.
+● Real-world applications of MongoDB.
+2. Understanding NoSQL
+● What is NoSQL?
+● Types of NoSQL databases (Key-Value, Document-based, Column-Family, Graph).
+● Difference between SQL and NoSQL databases.
+● Advantages and disadvantages of NoSQL.
+3. Setting Up MongoDB
+● Downloading and installing MongoDB server.
+● Setting up MongoDB on different operating systems (Windows, macOS, Linux).
+● Understanding MongoDB services and processes.
+● Installing and using MongoDB Compass (GUI tool).
+● Introduction to MongoDB Shell and MongoDB Atlas (Cloud Database).
+4. Basic CRUD Operations in MongoDB Shell
+● Creating a database and collections.
+● Inserting documents (insertOne(), insertMany()).
+● Reading documents (find(), findOne()).
+● Updating documents (updateOne(), updateMany()).
+● Deleting documents (deleteOne(), deleteMany()).
+5. Basic Database Operations
+● Counting documents (countDocuments()).
+● Retrieving distinct values (distinct()).
+● Understanding find().pretty() for better readability.
+● Sorting data (sort()).
+● Limiting results (limit(), skip()).
+6. Bulk Data Manipulation
+● Inserting multiple documents efficiently.
+● Bulk update operations.
+● Bulk delete operations.
+● Understanding ordered vs unordered bulk operations.
+7. Connecting MongoDB to Node.js
+● Installing MongoDB driver for Node.js.
+● Connecting to MongoDB using mongodb package.
+● Handling connection errors and reconnection strategies.
+● Using environment variables for MongoDB connection strings.
+8. Introduction to Mongoose (ODM)
+● What is Mongoose?
+● Understanding Object-Relational Mapping (ORM) and Object-Document Mapping (ODM).
+● Installing and setting up Mongoose in a Node.js project.
+● Defining a schema and model in Mongoose.
+● Benefits of using Mongoose over raw MongoDB driver.
+9. CRUD Operations Using Mongoose
+● Creating a new document using Mongoose models.
+● Reading documents with filters and projections.
+● Updating documents using findByIdAndUpdate() and updateOne().
+● Deleting documents using findByIdAndDelete() and deleteMany().
+● Using validation and default values in Mongoose schemas.
+10. Aggregation Pipeline
+● Understanding aggregation in MongoDB.
+● Different aggregation stages ($match, $group, $sort, $limit, $project, $unwind,
+$lookup).
+● Using aggregation for data transformation and analysis.
+● Examples of complex aggregations.
+11. Indexing in MongoDB
+● What is indexing in database systems?
+● Why indexing is important for performance.
+● Types of indexes in MongoDB (single-field, compound, text, hashed).
+● Creating and dropping indexes.
+● Analyzing query performance using explain().
+● Best practices for indexing.
+12. Collation in MongoDB
+● What is collation?
+● Importance of collation in text-based searches.
+● Setting collation for collections and queries.
+● Collation options (case sensitivity, sorting rules, language-specific sorting).
+Total Estimated Learning Time:
+● Beginner to Intermediate Level: 40-50 hours → 5-7 days
+Daily Learning Plan
+Day Topics Covered Hours
+Day 1 Introduction to MongoDB, NoSQL vs SQL, Setting Up MongoDB 8 hrs
+Day 2 CRUD Operations in Shell, Basic DB Operations 8 hrs
+Day 3 Bulk Operations, Connecting MongoDB to Node.js 8 hrs
+Day 4 Learning Mongoose and CRUD with Mongoose 8 hrs
+Day 5 Aggregation Pipeline 8 hrs
+Day 6 Indexing and Performance Optimization 8 hrs
+Day 7 Collation, Real-world Use Cases, and Final Revision 8 hrs
+Links: MongoDb Offical Documentation
