@@ -1,7 +1,8 @@
 const express = require("express");
-const students = require("../models/students");
+const studentSchema = require("../models/students");
 const router = express.Router();
 const multer = require("multer");
+const mongoose = require("mongoose");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -14,35 +15,62 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Middleware to check if student ID exists
-async function checkId(req, res, next) {
-  let rid = req.body.Enroll;
-
-  let flag = false;
-  let arr = await students.find({});
-  arr.forEach((obj) => {
-    if (obj.Enroll == Number(rid)) {
-      flag = true;
-    }
-  });
-
-  if (!flag) {
-    next();
+studentSchema.pre("insertMany", async (next, err, doc) => {
+  if (err) {
+    console.log(err);
   } else {
-    arr.forEach(async (obj) => {
+    let rid = doc.Enroll;
+    let flag = false;
+    let arr = await students.find({});
+    arr.forEach((obj) => {
       if (obj.Enroll == Number(rid)) {
-        await students.findOneAndReplace({ Enroll: rid }, req.body);
+        flag = true;
       }
     });
-    return res.redirect("/");
-  }
-}
 
-router.post("/", upload.single("Adhaar"), checkId, async (req, res) => {
+    if (!flag) {
+      next();
+    } else {
+      arr.forEach(async (obj) => {
+        if (obj.Enroll == Number(rid)) {
+          await students.findOneAndReplace({ Enroll: rid }, doc);
+        }
+      });
+      return res.redirect("/");
+    }
+  }
+  next();
+});
+const students = mongoose.model("students", studentSchema);
+
+// Middleware to check if student ID exists
+// async function checkId(req, res, next) {
+//   let rid = req.body.Enroll;
+
+//   let flag = false;
+//   let arr = await students.find({});
+//   arr.forEach((obj) => {
+//     if (obj.Enroll == Number(rid)) {
+//       flag = true;
+//     }
+//   });
+
+//   if (!flag) {
+//     next();
+//   } else {
+//     arr.forEach(async (obj) => {
+//       if (obj.Enroll == Number(rid)) {
+//         await students.findOneAndReplace({ Enroll: rid }, req.body);
+//       }
+//     });
+//     return res.redirect("/");
+//   }
+// }
+
+router.post("/", upload.single("Adhaar"), async (req, res) => {
   try {
     let data = req.body;
-    await students.insertOne(data);
-
+    await students.insertMany([data]);
     res.redirect("/");
   } catch (error) {
     console.error("Error writing to students.json:", error);

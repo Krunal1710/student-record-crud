@@ -12,5 +12,6 @@ const studentSchema = new mongoose.Schema({
   Adhaar: { type: String },
 });
 
-const students = mongoose.model("students", studentSchema);
-module.exports = students;
+// const students = mongoose.model("students", studentSchema);
+// exports.students = students;
+module.exports = studentSchema;
