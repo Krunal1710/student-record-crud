@@ -1,8 +1,8 @@
 const express = require("express");
-const studentSchema = require("../models/students");
+const students = require("../models/students");
 const router = express.Router();
 const multer = require("multer");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const glow = require("notify-send");
 
 const storage = multer.diskStorage({
@@ -16,26 +16,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-studentSchema.pre("insertMany", async (next, doc) => {
-  const students = mongoose.model("students", studentSchema);
-  let rid = doc[0].Enroll;
-  let flag = false;
-  let arr = await students.find({});
-  arr.forEach((obj) => {
-    if (obj.Enroll == Number(rid)) {
-      flag = true;
-    }
-  });
-  if (flag) {
-    return next(new Error("Enroll is already exist!"));
-  } else {
-    next();
-  }
-});
+//===================== pre transfer to models ================
 
 router.post("/", upload.single("Adhaar"), async (req, res) => {
   try {
-    const students = mongoose.model("students", studentSchema);
+    // const students = mongoose.model("students", studentSchema);
     let data = req.body;
     await students.insertMany([data]);
     res.redirect("/");

@@ -1,14 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const studentSchema = require("../models/students");
+const students = require("../models/students");
 const fs = require("fs");
-const mongoose = require("mongoose");
+const glow = require("notify-send");
+// const mongoose = require("mongoose");
 
 // delete using id
 
 router.get("/:id", async (req, res) => {
   try {
-    const students = mongoose.model("students", studentSchema);
+    // const students = mongoose.model("students", studentSchema);
     let id = req.params.id;
     await students.deleteOne({ Enroll: id });
     if (fs.existsSync(`public/images/${id}.jpeg`)) {
@@ -16,6 +17,7 @@ router.get("/:id", async (req, res) => {
         console.log(err);
       });
     }
+    glow.notify("Student Deleted!!");
     res.redirect("/");
   } catch (error) {
     console.error("Error while deleting student:", error);

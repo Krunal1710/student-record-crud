@@ -1,12 +1,12 @@
 const express = require("express");
-const studentSchema = require("../models/students");
+const students = require("../models/students");
 const router = express.Router();
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
 // router.use(common_task.router);
 router.get("/", async (req, res) => {
   try {
-    const students = mongoose.model("students", studentSchema);
+    // const students = mongoose.model("students", studentSchema);
     let arr = await students.find({});
     res.render("home", { students: arr });
   } catch (err) {

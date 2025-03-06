@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const studentSchema = require("../models/students");
+const students = require("../models/students");
 const multer = require("multer");
-const mongoose = require("mongoose");
+const glow = require("notify-send");
+// const mongoose = require("mongoose");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -17,8 +18,9 @@ const upload = multer({ storage: storage });
 // update
 router.post("/", upload.single("Adhaar"), async (req, res) => {
   try {
-    const students = mongoose.model("students", studentSchema);
+    // const students = mongoose.model("students", studentSchema);
     await students.findOneAndReplace({ Enroll: req.body.Enroll }, req.body);
+    glow.notify("Student details updated!!");
     res.redirect("/");
   } catch (error) {
     console.log(error);

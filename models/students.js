@@ -12,6 +12,22 @@ const studentSchema = new mongoose.Schema({
   Adhaar: { type: String },
 });
 
-// const students = mongoose.model("students", studentSchema);
-// exports.students = students;
-module.exports = studentSchema;
+studentSchema.pre("insertMany", async (next, doc) => {
+  let rid = doc[0].Enroll;
+  let flag = false;
+  let arr = await students.find({});
+  arr.forEach((obj) => {
+    if (obj.Enroll == Number(rid)) {
+      flag = true;
+    }
+  });
+  if (flag) {
+    return next(new Error("Enroll is already exist!"));
+  } else {
+    next();
+  }
+});
+
+const students = mongoose.model("students", studentSchema);
+
+module.exports = students;
