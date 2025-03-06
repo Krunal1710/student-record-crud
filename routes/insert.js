@@ -1,5 +1,6 @@
 const express = require("express");
 const students = require("../models/students");
+const validateStudent = require("../middlewares/studentValidator");
 const router = express.Router();
 const multer = require("multer");
 // const mongoose = require("mongoose");
@@ -18,7 +19,7 @@ const upload = multer({ storage: storage });
 
 //===================== pre transfer to models ================
 
-router.post("/", upload.single("Adhaar"), async (req, res) => {
+router.post("/", upload.single("Adhaar"), validateStudent, async (req, res) => {
   try {
     // const students = mongoose.model("students", studentSchema);
     let data = req.body;
