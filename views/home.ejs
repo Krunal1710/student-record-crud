@@ -70,7 +70,7 @@
       // }
       function edit(btn) {
         // openForm();
-
+        document.getElementById("insertForm").setAttribute("action", "/update");
         let student = JSON.parse(btn.getAttribute("data-student"));
         document.getElementById("Enroll").value = student.Enroll;
         document.getElementById("Name").value = student.Name;
@@ -182,7 +182,7 @@
           </div>
           <div class="modal-body">
             <!-- <div id="myForm" class="form-popup"> -->
-            <form enctype="multipart/form-data" action="/insert" method="post">
+            <form enctype="multipart/form-data" action="/insert" id="insertForm" method="post">
               <!-- <legend class="text-center">Student Record Form</legend> -->
               <div class="mb-3">
                 <label class="form-label" for="Enroll"
