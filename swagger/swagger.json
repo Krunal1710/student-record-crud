@@ -1,0 +1,76 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Student Management System",
+        "version": "1.0.0",
+        "description": "A simple system, where you can insert, update, delete student's detail."
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000"
+        }
+    ],
+    "paths": {
+        "/insert": {
+            "post": {
+                "summary": "Insert a new student",
+                "description": "Inserts a new student record with student data and an Adhaar image",
+                "tags": [
+                    "Student"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "Enroll": {
+                                        "type": "integer",
+                                        "description": "Enrollment number of the student"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "description": "Name of the student"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "description": "Email address of the student"
+                                    },
+                                    "course": {
+                                        "type": "string",
+                                        "description": "Enrolled course of the student"
+                                    },
+                                    "Adhaar Upload": {
+                                        "type": "file",
+                                        "format": "binary",
+                                        "description": "Adhaar image of the student"
+                                    }
+                                },
+                                "required": [
+                                    "Enroll",
+                                    "name",
+                                    "email",
+                                    "course",
+                                    "Adhaar Upload"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Student created successfully"
+                    },
+                    "400": {
+                        "description": "Bad request, invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        }
+    }
+}
