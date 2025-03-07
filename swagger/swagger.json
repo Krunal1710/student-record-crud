@@ -16,7 +16,7 @@
                 "summary": "Insert a new student",
                 "description": "Inserts a new student record with student data and an Adhaar image",
                 "tags": [
-                    "Student"
+                    "Insert"
                 ],
                 "requestBody": {
                     "required": true,
@@ -74,7 +74,7 @@
                 "summary": "Delete a student",
                 "description": "Deletes a perticuler student record",
                 "tags": [
-                    "Student"
+                    "Delete"
                 ],
                 "parameters": [
                     {
@@ -101,7 +101,7 @@
                 "summary": "Update student record by enrollment number",
                 "description": "Update student record by enrollment number",
                 "tags": [
-                    "Student"
+                    "Update"
                 ],
                 "requestBody": {
                     "required": true,

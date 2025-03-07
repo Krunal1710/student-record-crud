@@ -3,25 +3,43 @@ const students = require("../models/students");
 const validateStudent = require("../middlewares/studentValidator");
 const router = express.Router();
 const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
 // const mongoose = require("mongoose");
 const glow = require("notify-send");
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/images");
-  },
-  filename: function (req, file, cb) {
-    cb(null, req.body.Enroll + ".jpeg");
-  },
-});
-
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "public/images");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, req.body.Enroll + ".jpeg");
+//   },
+// });
+const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 //===================== pre transfer to models ================
 
 router.post("/", upload.single("Adhaar"), validateStudent, async (req, res) => {
   try {
+    let arr = await students.find({ Enroll: req.body.Enroll });
     // const students = mongoose.model("students", studentSchema);
+    if (arr.length === 0) {
+      const file = req.file;
+
+      if (!file) {
+        throw new Error("No file uploaded.");
+      }
+
+      // Assuming the file is uploaded in the "Adhaar" field
+      const fileName = req.body.Enroll + ".jpeg";
+      const filePath = path.join(__dirname, "../public/images", fileName);
+
+      // Save the image to the local folder after validation
+      fs.writeFileSync(filePath, file.buffer); // Save file buffer to the disk
+    }
+
     let data = req.body;
     await students.insertMany([data]);
     res.status(200).redirect("/");
