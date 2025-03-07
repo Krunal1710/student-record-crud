@@ -24,7 +24,7 @@ router.post("/", upload.single("Adhaar"), validateStudent, async (req, res) => {
     // const students = mongoose.model("students", studentSchema);
     let data = req.body;
     await students.insertMany([data]);
-    res.redirect("/");
+    res.status(200).redirect("/");
   } catch (error) {
     // console.error("Error writing to students.json:", error);
     glow.notify(error.message);

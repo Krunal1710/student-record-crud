@@ -18,10 +18,10 @@ router.get("/:id", async (req, res) => {
       });
     }
     glow.notify("Student Deleted!!");
-    res.redirect("/");
+    res.status(200).redirect("/");
   } catch (error) {
     console.error("Error while deleting student:", error);
-    res.status(500).send("Error while deleting data!");
+    res.status(404).send("Error while deleting data!");
   }
 });
 

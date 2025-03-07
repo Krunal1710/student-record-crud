@@ -29,31 +29,31 @@
                                         "type": "integer",
                                         "description": "Enrollment number of the student"
                                     },
-                                    "name": {
+                                    "Name": {
                                         "type": "string",
                                         "description": "Name of the student"
                                     },
-                                    "email": {
+                                    "Email": {
                                         "type": "string",
                                         "format": "email",
                                         "description": "Email address of the student"
                                     },
-                                    "course": {
+                                    "Course": {
                                         "type": "string",
                                         "description": "Enrolled course of the student"
                                     },
-                                    "Adhaar Upload": {
-                                        "type": "file",
+                                    "Adhaar": {
+                                        "type": "string",
                                         "format": "binary",
                                         "description": "Adhaar image of the student"
                                     }
                                 },
                                 "required": [
                                     "Enroll",
-                                    "name",
-                                    "email",
-                                    "course",
-                                    "Adhaar Upload"
+                                    "Name",
+                                    "Email",
+                                    "Course",
+                                    "Adhaar"
                                 ]
                             }
                         }
@@ -63,8 +63,90 @@
                     "200": {
                         "description": "Student created successfully"
                     },
-                    "400": {
-                        "description": "Bad request, invalid data"
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/delete/{id}": {
+            "get": {
+                "summary": "Delete a student",
+                "description": "Deletes a perticuler student record",
+                "tags": [
+                    "Student"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": "true",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Student deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/update": {
+            "post": {
+                "summary": "Update student record by enrollment number",
+                "description": "Update student record by enrollment number",
+                "tags": [
+                    "Student"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "Enroll": {
+                                        "type": "integer",
+                                        "description": "Enrollment number of the student"
+                                    },
+                                    "Name": {
+                                        "type": "string",
+                                        "description": "Name of the student"
+                                    },
+                                    "Email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "description": "Email address of the student"
+                                    },
+                                    "Course": {
+                                        "type": "string",
+                                        "description": "Enrolled course of the student"
+                                    },
+                                    "Adhaar": {
+                                        "type": "string",
+                                        "format": "binary",
+                                        "description": "Adhaar image of the student"
+                                    }
+                                },
+                                "required": [
+                                    "Enroll",
+                                    "Name",
+                                    "Email",
+                                    "Course",
+                                    "Adhaar"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Student updated successfully"
                     },
                     "404": {
                         "description": "Not found"

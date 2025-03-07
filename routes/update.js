@@ -22,7 +22,7 @@ router.post("/", upload.single("Adhaar"), validateStudent, async (req, res) => {
     // const students = mongoose.model("students", studentSchema);
     await students.findOneAndReplace({ Enroll: req.body.Enroll }, req.body);
     glow.notify("Student details updated!!");
-    res.redirect("/");
+    res.status(200).redirect("/");
   } catch (error) {
     console.log(error);
     res.status(404).redirect("/");
