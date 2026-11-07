@@ -2,3 +2,5 @@ node_modules/
 bin/www
 package-lock.json
 .env
+.env,example
+.env.*
