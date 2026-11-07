@@ -16,10 +16,11 @@ Express.js
 MongoDB
 Mongoose
 Multer
-HTML, CSS, JavaScript (if applicable)
+Bootstrap
+HTML, CSS, JavaScript
 
 Project Type
 Internship Practice Project
 
 Purpose
-Developed during my internship to gain practical experience in backend development, REST APIs, database management, ejs, understanding folder structure and file uploads etc.
+Developed during my internship to gain practical experience in backend development, REST APIs, database management, ejs, understanding folder structure, mongodb and file uploads etc.
